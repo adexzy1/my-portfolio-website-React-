@@ -8,7 +8,7 @@ import Amal from './img/amal.png';
 const projectItems = [
   {
     image: digipay,
-    p: 'A web wallet system using firebase as backend (React)',
+    p: 'A web wallet system using firebase as backend with limited screens (React)',
     href1: 'https://digipay-nu.vercel.app/',
     href2: 'https://github.com/adexzy1/Digipay',
     alt: 'digipay',
@@ -22,7 +22,7 @@ const projectItems = [
   },
   {
     image: Amal,
-    p: 'A simple live and function website build for a client',
+    p: 'A simple live and function website built for a client (html, css & js)',
     href1: 'https://amalpaint.com/',
     href2: 'https://github.com/adexzy1/amal-paints',
     alt: 'Amal',
