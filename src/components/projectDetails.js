@@ -3,6 +3,7 @@ import hosterr from './img/hosterr.png';
 import todo from './img/todo.png';
 import unifeed from './img/unifeed.png';
 import digipay from './img/digipay.png';
+import Amal from './img/amal.png';
 
 const projectItems = [
   {
@@ -18,6 +19,13 @@ const projectItems = [
     href1: 'https://unifeed.vercel.app/',
     href2: 'https://github.com/adexzy1/unifeed',
     alt: 'unifeed',
+  },
+  {
+    image: Amal,
+    p: 'A simple live and function website build for a client',
+    href1: 'https://amalpaint.com/',
+    href2: 'https://github.com/adexzy1/amal-paints',
+    alt: 'Amal',
   },
   {
     image: calculator,

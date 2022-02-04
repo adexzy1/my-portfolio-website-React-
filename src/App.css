@@ -197,6 +197,7 @@ nav ul li a:hover {
 }
 .project_item img {
   width: 100%;
+  object-fit: cover;
 }
 .item_details {
   padding: 10px 10px 15px;
@@ -373,6 +374,7 @@ footer span {
   }
   .project_item {
     margin: auto;
+    height: 23rem;
   }
 
   /* sponsors section */

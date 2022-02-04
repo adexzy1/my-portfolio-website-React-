@@ -59,6 +59,10 @@ function App() {
                 h3="Javascript"
                 p="I write clear, functional and reusable javascript programs"
               />
+              <Details
+                h3="React"
+                p="I build clean and functional WEB APPS with clean react codes"
+              />
             </>
           }
         />
