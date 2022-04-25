@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { RiTwitterFill } from 'react-icons/ri';
 import { RiLinkedinBoxFill } from 'react-icons/ri';
 import { RiGithubFill } from 'react-icons/ri';
 import ContactForm from './ContactForm';
 import spinner from './img/Spinner.svg';
 
-const HireMe = () => {
+const HireMe = forwardRef((props, ref) => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(<img src={spinner} alt="loading.." />);
 
   return (
-    <section className=" p-5 sm:px-8 lg:px-24 2xl:w-[1400px] 2xl:mx-auto">
+    <section
+      ref={ref}
+      className=" p-5 sm:px-8 lg:px-24 2xl:w-[1400px] 2xl:mx-auto"
+    >
       <h4 className="text-lg inline-block pt-3 pb-2 title relative text font-semibold">
         Hire Me
       </h4>
@@ -64,6 +67,6 @@ const HireMe = () => {
       </section>
     </section>
   );
-};
+});
 
 export default HireMe;

@@ -2,11 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-nav a {
-  @apply p-4 pt-10 lg:mr-5 lg:pt-4;
+body {
+  scroll-behavior: smooth;
+  position: relative;
 }
 
-nav a:hover {
+nav section,
+nav a {
+  @apply p-4 pt-10 lg:mr-5 lg:pt-4 cursor-pointer;
+}
+
+nav a:hover,
+nav section:hover {
   @apply text-nav;
 }
 @layer utilities {

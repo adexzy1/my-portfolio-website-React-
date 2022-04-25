@@ -1,6 +1,12 @@
-const About = () => {
+import { forwardRef } from 'react';
+
+const About = forwardRef((props, ref) => {
   return (
-    <section className="p-5 mt-10 sm:p-8 md:px16 lg:px-24 2xl:w-[1400px] 2xl:mx-auto">
+    <section
+      ref={ref}
+      id="about"
+      className="p-5 mt-10 sm:p-8 md:px16 lg:px-24 2xl:w-[1400px] 2xl:mx-auto"
+    >
       <h4 className="text-lg inline-block pt-3 pb-5 title relative text font-semibold ">
         About Me
       </h4>
@@ -11,6 +17,6 @@ const About = () => {
       </p>
     </section>
   );
-};
+});
 
 export default About;

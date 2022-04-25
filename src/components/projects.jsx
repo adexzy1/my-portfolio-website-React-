@@ -1,9 +1,9 @@
 import ProjectCard from './projectCard';
 import { queryData } from '../config/firebaseConfig/firebase';
 import { getDocs } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, forwardRef } from 'react';
 
-const Projects = () => {
+const Projects = forwardRef((props, ref) => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,10 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className="p-5 mt-10 sm:p-8 md:px16 lg:px-24 2xl:w-[1400px] 2xl:mx-auto">
+    <section
+      ref={ref}
+      className="p-5 mt-10 sm:p-8 md:px16 lg:px-24 2xl:w-[1400px] 2xl:mx-auto"
+    >
       <h4 className="text-lg inline-block pt-3 pb-10 title relative text font-semibold">
         My Works
       </h4>
@@ -48,6 +51,6 @@ const Projects = () => {
       )}
     </section>
   );
-};
+});
 
 export default Projects;
