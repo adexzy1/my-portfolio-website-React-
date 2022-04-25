@@ -1,48 +1,26 @@
 import React from 'react';
-import Mypic from './img/myPic.png';
+import hero from './img/hero.svg';
 
 const Hero = () => {
   return (
-    <section className="hero_section">
-      <div className="hero_img">
-        <svg
-          className="home_blob"
-          viewBox="0 0 200 187"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-        >
-          <mask id="mask0" masktype="alpha">
-            <path
-              d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-              130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-              97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-              0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-            />
-          </mask>
-          <g mask="url(#mask0)">
-            <path
-              d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-              165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-              129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-              -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-            />
-            <image className="home_blob-img" x="1rem" y="0.7rem" href={Mypic} />
-          </g>
-        </svg>
+    <section className="p-5 md:grid grid-cols-2 flex-row-reverse justify-center sm:p-8 md:px-16 lg:px-24 lg:mt-10 2xl:w-[1400px] 2xl:mx-auto">
+      <div className="max-w-full md:w-[40rem] m-auto col-start-2">
+        <img src={hero} alt="avatar" className="h-full w-full" />
       </div>
-      <div className="hero_details">
-        <h1>John Adekoya</h1>
-        <p className="hero_topic" id="hero_topic">
-          Frontend Developer
-        </p>
-        <p>
-          Hi i'm John Adekoya, a resourceful Frontend <br />
-          developer based in Nigeria. Welcome to my <br />
-          portfolio.
-        </p>
-        <a href="#about">
-          View My Resume
-          <i className="uil uil-arrow-down"></i>
+
+      <div className="col-start-1 row-start-1 md:mt-9 lg:mt-14 xl:mt-20 xl:pl-7">
+        <h1 className="md:text-[2.1rem] md:leading-[3rem] lg:text-[2.5rem]  xl:text-[3.7rem] xl:lg:leading-[5rem] sm:text-[3.1rem] sm:leading-[4rem]  text-3xl  pb-6 pt-5 font-bold ">
+          Building Beautiful & <br className="hidden md:hidden sm:block" />{' '}
+          Functional Web Apps
+        </h1>
+
+        <a
+          href="https://drive.google.com/uc?export=download&id=1pjCvqL9-TwaxB_seNhVzownyqlyDP5hY"
+          download="John's Resume"
+        >
+          <button className="bg-purple px-7 py-4 mt-4 rounded hover:text-nav">
+            Download Resume
+          </button>
         </a>
       </div>
     </section>
