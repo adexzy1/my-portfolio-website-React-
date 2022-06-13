@@ -13,6 +13,6 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 const db = getFirestore();
 const colRef = collection(db, 'projects');
-const queryData = query(colRef, orderBy('name', 'asc'));
+const queryData = query(colRef, orderBy('id', 'desc'));
 
 export { queryData };
