@@ -15,8 +15,10 @@ const CardBack = ({ liveLink, github, details, stack }) => {
       <p className={innerStyle.details}>{details}</p>
 
       <div className={innerStyle.stack}>
-        {stack?.map((item) => (
-          <span className={innerStyle.span}>{item}</span>
+        {stack?.map((item, index) => (
+          <span key={index} className={innerStyle.span}>
+            {item}
+          </span>
         ))}
       </div>
 
