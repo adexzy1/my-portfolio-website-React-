@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import Skills from './components/Skills';
 import { useRef } from 'react';
 import ScrollToTop from './components/ScrollToTop';
+import Projects from './components/Projects';
 
 function App() {
   const about = useRef();
@@ -31,7 +32,7 @@ function App() {
       <Hero />
       <About ref={about} />
       <Skills ref={skills} />
-
+      <Projects ref={projects} />
       <HireMe ref={hireMe} />
       <ScrollToTop bodyRef={body} />
     </div>
