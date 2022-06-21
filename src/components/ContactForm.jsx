@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import mail from './img/mail.gif';
+import mail from '../assets/img/mail.gif';
 
-const ContactForm = ({ setIsloading, setMessage }) => {
+const ContactForm = ({ setIsloading, setIsSent }) => {
   const form = useRef();
   const emailRef = useRef();
   const nameRef = useRef();
@@ -20,6 +20,13 @@ const ContactForm = ({ setIsloading, setMessage }) => {
     }
   };
 
+  const style = {
+    form: 'mt-14 md:w-[50%] lg:w-[40%]',
+    label: 'block',
+    textarea: 'bg-input w-full h-52 p-5 rounded-md outline-none',
+    Btn: 'bg-purple px-7 py-3 my-2 w-2/5 rounded hover:text-nav',
+  };
+
   const sendEmail = () => {
     emailjs
       .sendForm(
@@ -30,13 +37,13 @@ const ContactForm = ({ setIsloading, setMessage }) => {
       )
       .then(
         () => {
-          setMessage(<img src={mail} alt="Mail sent" />);
+          setIsSent(<img src={mail} alt="Mail sent" />);
           setTimeout(() => {
             setIsloading(false);
           }, 3000);
         },
         (error) => {
-          setMessage(
+          setIsSent(
             <p className="font-bold text-red-400">
               An error occured try again later
             </p>
@@ -46,32 +53,26 @@ const ContactForm = ({ setIsloading, setMessage }) => {
   };
 
   return (
-    <form
-      className="mt-14 md:w-[50%] lg:w-[40%]"
-      onSubmit={handleSUbmit}
-      ref={form}
-    >
+    <form className={style.form} onSubmit={handleSUbmit} ref={form}>
       <div className="form-group">
-        <label className="block">Name</label>
+        <label className={style.label}>Name</label>
         <input type="text" name="name" required ref={nameRef} />
       </div>
       <div className="form-group">
-        <label className="block">Email</label>
+        <label className={style.label}>Email</label>
         <input type="Email" name="email" required ref={emailRef} />
       </div>
       <div className="form-group">
-        <label className="block">Message</label>
+        <label className={style.label}>Message</label>
         <textarea
           name="message"
-          className="bg-input w-full h-52 p-5 rounded-md outline-none"
+          className={style.textarea}
           required
           ref={messageRef}
         ></textarea>
       </div>
 
-      <button className="bg-purple px-7 py-3 my-2 w-2/5 rounded hover:text-nav">
-        Send
-      </button>
+      <button className={style.Btn}>Send</button>
     </form>
   );
 };

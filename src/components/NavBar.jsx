@@ -26,19 +26,26 @@ const NavBar = ({ about, skills, projects, hireMe }) => {
       document.body.style.overflowY = 'scroll';
   }
 
+  const style = {
+    header: 'py-6 lg:mt-5 z-30',
+    container:
+      'px-5 flex justify-between items-center md:px16 lg:px-24 2xl:w-[1400px] 2xl:mx-auto',
+    nav: `${showMenu ? 'translate-x-0' : 'translate-x-[-100%]'}
+      transform  absolute flex flex-col  top-0 bg-input text-white w-[50%] left-0 p-5 pt-14  transition sm:pl-10 lg:translate-x-0 lg:relative lg:flex-row lg:bg-transparent lg:w-auto lg:items-center lg:text-center lg:p-0 lg:pt-0 lg:h-0 h-[100vh]`,
+    btn: 'lg:mr-0 bg-purple px-5 py-2 rounded whitespace-nowrap mt-10 lg:mt-0',
+    icon__wrapper: 'lg:hidden',
+    icon: 'text-2xl cursor-pointer',
+  };
+
   return (
-    <header className="py-6 lg:mt-5 z-30">
-      <section className="px-5 flex justify-between items-center md:px16 lg:px-24 2xl:w-[1400px] 2xl:mx-auto">
+    <header className={style.header}>
+      <section className={style.container}>
         <a href="/">
           John <br />
           Adekoya.
         </a>
 
-        <nav
-          ref={ref}
-          className={`${showMenu ? 'translate-x-0' : 'translate-x-[-100%]'}
-          transform  absolute flex flex-col  top-0 bg-input text-white w-[50%] left-0 p-5 pt-14  transition sm:pl-10 lg:translate-x-0 lg:relative lg:flex-row lg:bg-transparent lg:w-auto lg:items-center lg:text-center lg:p-0 lg:pt-0 lg:h-0 h-[100vh]`}
-        >
+        <nav ref={ref} className={style.nav}>
           <a href="/">Home</a>
 
           <section
@@ -73,17 +80,17 @@ const NavBar = ({ about, skills, projects, hireMe }) => {
               setShowMenu(false);
               scroll(hireMe);
             }}
-            className="lg:mr-0 bg-purple px-5 py-2 rounded whitespace-nowrap mt-10 lg:mt-0"
+            className={style.btn}
           >
             Hire Me
           </button>
         </nav>
 
-        <section className="lg:hidden" onClick={toggleMenu}>
+        <section className={style.icon__wrapper} onClick={toggleMenu}>
           {showMenu ? (
-            <RiCloseFill className="text-2xl cursor-pointer" />
+            <RiCloseFill className={style.icon} />
           ) : (
-            <RiMenu3Line className="text-2xl cursor-pointer" />
+            <RiMenu3Line className={style.icon} />
           )}
         </section>
       </section>

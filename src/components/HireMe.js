@@ -3,61 +3,69 @@ import { RiTwitterFill } from 'react-icons/ri';
 import { RiLinkedinBoxFill } from 'react-icons/ri';
 import { RiGithubFill } from 'react-icons/ri';
 import ContactForm from './ContactForm';
-import spinner from './img/Spinner.svg';
+import spinner from '../assets/icons/Spinner.svg';
 
 const HireMe = forwardRef((props, ref) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState(<img src={spinner} alt="loading.." />);
+  const [isSent, setIsSent] = useState(<img src={spinner} alt="loading.." />);
+
+  const style = {
+    container: ' p-5 sm:px-8 lg:px-24 2xl:w-[1400px] 2xl:mx-auto',
+    title: 'text-lg inline-block pt-3 pb-2 title relative text font-semibold',
+    title__tag: 'text-secondary',
+    wrapper: 'md:flex gap-10',
+    isSent:
+      'flex justify-center items-center w-full h-[15rem] mt-14 md:w-[50%] lg:w-[40%]',
+    contact__details_container: 'mt-10 md:w-[40%] md:mt-24 md:pt-2',
+    address: 'mb-10 not-italic',
+    address__content: 'block text-secondary pb-3 hover:text-nav',
+    socials__container: 'flex gap-5 mb-5',
+    socials__content: 'text-2xl hover:text-nav',
+  };
 
   return (
-    <section
-      ref={ref}
-      className=" p-5 sm:px-8 lg:px-24 2xl:w-[1400px] 2xl:mx-auto"
-    >
-      <h4 className="text-lg inline-block pt-3 pb-2 title relative text font-semibold">
-        Hire Me
-      </h4>
-      <p className="text-secondary">Feel free to contact me at anytime</p>
+    <section ref={ref} className={style.container}>
+      <h4 className={style.title}>Hire Me</h4>
+      <p className={style.title__tag}>Feel free to contact me at anytime</p>
 
-      <section className="md:flex gap-10">
+      <section className={style.wrapper}>
         {isLoading ? (
-          <section className="flex justify-center items-center w-full h-[15rem] mt-14 md:w-[50%] lg:w-[40%]">
-            {message}
-          </section>
+          <section className={style.isSent}>{isSent}</section>
         ) : (
-          <ContactForm setIsloading={setIsLoading} setMessage={setMessage} />
+          <ContactForm setIsloading={setIsLoading} setIsSent={setIsSent} />
         )}
 
-        <div className="mt-10 md:w-[40%] md:mt-24 md:pt-2">
-          <address className="mb-10 not-italic">
-            <a
-              className="block text-secondary pb-3 hover:text-nav"
-              href="tel:+234 70 6536 8281"
-            >
+        <div className={style.contact__details_container}>
+          <address className={style.address}>
+            <a className={style.address__content} href="tel:+234 70 6536 8281">
               <p>+234 70 6536 8281</p>
             </a>
+
             <a
-              className="block text-secondary hover:text-nav"
+              className={style.address__content}
               href="mailto:Johnadexzy@gmail.com"
             >
               Johnadexzy@gmail.com
             </a>
           </address>
-          <div className="flex gap-5 mb-5">
+
+          <div className={style.socials__container}>
             <a
-              className="text-2xl hover:text-nav"
+              className={style.socials__content}
               href="https://github.com/adexzy1"
             >
               <RiGithubFill />
             </a>
+
             <a
-              className="text-2xl hover:text-nav"
+              className={style.socials__content}
               href="https://twitter.com/iamthebravo"
             >
               <RiTwitterFill />
             </a>
+
             <a
-              className="text-2xl hover:text-nav"
+              className={style.socials__content}
               href="https://www.linkedin.com/in/adekoya-john-adebisi-14a628127/"
             >
               <RiLinkedinBoxFill />
