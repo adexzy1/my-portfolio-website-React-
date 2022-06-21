@@ -4,7 +4,6 @@ import About from './components/About';
 import Hero from './components/Hero';
 import HireMe from './components/HireMe';
 import NavBar from './components/NavBar';
-import Projects from './components/Projects';
 import Skills from './components/Skills';
 import { useRef } from 'react';
 import ScrollToTop from './components/ScrollToTop';
@@ -32,7 +31,7 @@ function App() {
       <Hero />
       <About ref={about} />
       <Skills ref={skills} />
-      <Projects ref={projects} />
+
       <HireMe ref={hireMe} />
       <ScrollToTop bodyRef={body} />
     </div>
