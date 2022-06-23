@@ -11,7 +11,7 @@ const About = forwardRef((props, ref) => {
     <section ref={ref} className={style.container}>
       <h4 className={style.about__me}>About Me</h4>
       <p className={style.about_text}>
-        Hi &#128075; My name is Adekoya John, I am a self-taught frontend
+        Hi &#128075; My name is John Adekoya, I am a self-taught frontend
         developer.
         <br />I build functional and user-friendly Web Apps for companies and
         businesses. I am the Software chef the code is my ingredient, I love to
