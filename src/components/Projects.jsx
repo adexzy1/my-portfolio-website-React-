@@ -24,7 +24,7 @@ const Projects = forwardRef((props, ref) => {
   }, []);
 
   const style = {
-    container: 'p-5 mt-10 sm:p-8 md:px16 lg:px-24 2xl:w-[1400px] 2xl:mx-auto',
+    container: 'p-5 mt-10 sm:p-8 md:px16 lg:px-24',
     title: 'text-lg inline-block pt-3 pb-10 title relative text font-semibold',
     project__container: 'grid sm:grid-cols-2 gap-5 lg:grid-cols-3',
     loading: 'text-purple font-bold text-center',

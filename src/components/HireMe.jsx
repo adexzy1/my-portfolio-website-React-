@@ -10,7 +10,7 @@ const HireMe = forwardRef((props, ref) => {
   const [isSent, setIsSent] = useState(<img src={spinner} alt="loading.." />);
 
   const style = {
-    container: ' p-5 sm:px-8 lg:px-24 2xl:w-[1400px] 2xl:mx-auto',
+    container: ' p-5 sm:px-8 lg:px-24',
     title: 'text-lg inline-block pt-3 pb-2 title relative text font-semibold',
     title__tag: 'text-secondary',
     wrapper: 'md:flex gap-10',

@@ -3,7 +3,7 @@ import HeroImg from '../assets/img/hero.png';
 const Hero = () => {
   const style = {
     container:
-      'p-5 md:grid grid-cols-2 flex-row-reverse justify-center sm:p-8 md:px-16 lg:px-24 lg:mt-10 2xl:w-[1400px] 2xl:mx-auto',
+      'p-5 md:grid grid-cols-2 flex-row-reverse justify-center sm:p-8 md:px-16 lg:px-24 lg:mt-10',
     hero__wrapper: 'max-w-full md:w-[40rem] m-auto col-start-2',
     hero__img: 'h-full w-full',
     details__wrapper: 'col-start-1 row-start-1 md:mt-9 lg:mt-14 xl:mt-20',

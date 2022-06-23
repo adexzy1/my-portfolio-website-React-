@@ -2,22 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  scroll-behavior: smooth;
-  position: relative;
-}
-
-nav section,
-nav a {
-  @apply p-4 pt-10 lg:mr-5 lg:pt-4 cursor-pointer;
-}
-
-nav a:hover,
-nav section:hover {
-  @apply text-nav;
-}
-
 @layer utilities {
+  body {
+    scroll-behavior: smooth;
+    position: relative;
+  }
+
+  nav section,
+  nav a {
+    @apply p-4 pt-10 lg:mr-5 lg:pt-4 cursor-pointer;
+  }
+
+  nav a:hover,
+  nav section:hover {
+    @apply text-nav;
+  }
+
   .title::after {
     content: '';
     position: absolute;
@@ -28,23 +28,29 @@ nav section:hover {
     left: 0;
     @apply bg-purple;
   }
+
   .projects:hover section {
     transform: translateY(0);
   }
+
   .skills p {
     @apply bg-badge mt-3 mr-3 px-3 py-1 inline-block cursor-pointer;
   }
+
   .skills p:hover {
     transform: translateY(-1rem);
     transition: ease-in-out all 0.3s;
     @apply bg-purple;
   }
+
   .form-group {
     @apply mt-3 mb-3;
   }
+
   .form-group label {
     @apply pb-3;
   }
+
   .form-group input {
     @apply bg-input w-full h-12 p-5 rounded-md outline-none;
   }

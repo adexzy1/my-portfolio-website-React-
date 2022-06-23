@@ -18,7 +18,7 @@ function App() {
 
   const style = {
     wrapper:
-      'text-white bg-body font-poppins selection:bg-nav selection:text-white',
+      'text-white bg-body font-poppins selection:bg-nav selection:text-white w-[1440px] max-w-[100%] m-auto',
   };
 
   return (

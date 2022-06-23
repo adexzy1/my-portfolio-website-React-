@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 const Skills = forwardRef((props, ref) => {
   const style = {
-    container: '"p-5 mt-10 sm:p-8 md:px16 lg:px-24 2xl:w-[1400px] 2xl:mx-auto"',
+    container: 'p-5 mt-10 sm:p-8 md:px16 lg:px-24',
     title: 'text-lg inline-block pt-3 pb-5 title relative text font-semibold',
   };
 

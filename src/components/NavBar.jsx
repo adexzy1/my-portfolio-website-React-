@@ -28,8 +28,7 @@ const NavBar = ({ about, skills, projects, hireMe }) => {
 
   const style = {
     header: 'py-6 lg:mt-5 z-30',
-    container:
-      'px-5 flex justify-between items-center md:px16 lg:px-24 2xl:w-[1400px] 2xl:mx-auto',
+    container: 'px-5 flex justify-between items-center md:px16 lg:px-24',
     nav: `${showMenu ? 'translate-x-0' : 'translate-x-[-100%]'}
       transform  absolute flex flex-col  top-0 bg-input text-white w-[50%] left-0 p-5 pt-14  transition sm:pl-10 lg:translate-x-0 lg:relative lg:flex-row lg:bg-transparent lg:w-auto lg:items-center lg:text-center lg:p-0 lg:pt-0 lg:h-0 h-[100vh]`,
     btn: 'lg:mr-0 bg-purple px-5 py-2 rounded whitespace-nowrap mt-10 lg:mt-0',
