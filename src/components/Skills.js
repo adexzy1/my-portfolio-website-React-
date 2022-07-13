@@ -14,6 +14,8 @@ const Skills = forwardRef((props, ref) => {
         <p>FIREBASE</p>
         <p>GIT</p>
         <p>TAILWIND</p>
+        <p>TYPESCRIPT</p>
+        <p>REDUX TOOLKIT</p>
       </section>
     </section>
   );

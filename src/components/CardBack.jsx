@@ -25,13 +25,17 @@ const CardBack = ({ liveLink, github, details, stack }) => {
       <ul className={innerStyle.ul}>
         {github && (
           <li className={innerStyle.li}>
-            <a href={github}>Github</a>
+            <a href={github} target="_blank" rel="noreferrer">
+              Github
+            </a>
             <CgArrowTopRight />
           </li>
         )}
 
         <li className={innerStyle.li}>
-          <a href={liveLink}>Live link</a>
+          <a href={liveLink} target="_blank" rel="noreferrer">
+            Live link
+          </a>
           <CgArrowTopRight />
         </li>
       </ul>

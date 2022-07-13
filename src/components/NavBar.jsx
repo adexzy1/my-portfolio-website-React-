@@ -12,7 +12,7 @@ const NavBar = ({ about, skills, projects, hireMe }) => {
   });
 
   const toggleMenu = () => {
-    setShowMenu((initial) => !initial);
+    setShowMenu((prev) => !prev);
   };
 
   switch (showMenu) {
