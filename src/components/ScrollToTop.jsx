@@ -1,25 +1,11 @@
 import scroll from '../hooks/UseScroll';
 import { BiUpArrow } from 'react-icons/bi';
-import { useState, useEffect } from 'react';
+import useShowElement from '../hooks/useShowElement';
 
 const ScrollToTop = ({ bodyRef }) => {
-  const [showScrolltoTop, setScrolltoTop] = useState(false);
+  // custom hook
+  const showScrolltoTop = useShowElement(200);
 
-  useEffect(() => {
-    const showButton = () => {
-      if (window.scrollY > 200) {
-        setScrolltoTop(true);
-      } else {
-        setScrolltoTop(false);
-      }
-    };
-
-    window.addEventListener('scroll', showButton);
-
-    return () => {
-      window.removeEventListener('scroll', showButton);
-    };
-  }, []);
   return (
     <section>
       {showScrolltoTop && (

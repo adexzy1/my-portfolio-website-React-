@@ -2,6 +2,7 @@ import { queryData } from '../config/firebaseConfig/firebase';
 import { getDocs } from 'firebase/firestore';
 import { useEffect, useState, forwardRef } from 'react';
 import ProjectCard from './ProjectCard';
+import spinner from '../assets/icons/Spinner.svg';
 
 const Projects = forwardRef((props, ref) => {
   const [projects, setProjects] = useState([]);
@@ -24,15 +25,19 @@ const Projects = forwardRef((props, ref) => {
   }, []);
 
   const style = {
-    container: 'p-5 mt-10 sm:p-8 md:px16 lg:px-24',
-    title: 'text-lg inline-block pt-3 pb-10 title relative text font-semibold',
+    container: 'p-5  sm:px-8 md:px16 lg:px-24 pt-32',
+    title_wrapper: 'text-center',
+    title:
+      'text-lg inline-block pt-3 pb-10 title relative text font-semibold text-center',
     project__container: 'grid sm:grid-cols-2 gap-5 lg:grid-cols-3',
-    loading: 'text-purple font-bold text-center',
+    loading: 'flex justify-center',
   };
 
   return (
     <section ref={ref} className={style.container}>
-      <h4 className={style.title}>My Works</h4>
+      <div className={style.title_wrapper}>
+        <h4 className={style.title}>My Works</h4>
+      </div>
 
       {projects.length !== 0 ? (
         <div className={style.project__container}>
@@ -41,7 +46,9 @@ const Projects = forwardRef((props, ref) => {
           ))}
         </div>
       ) : (
-        <section className={style.loading}>Loading...</section>
+        <section className={style.loading}>
+          <img src={spinner} alt="loading.." className="m sm" />
+        </section>
       )}
     </section>
   );

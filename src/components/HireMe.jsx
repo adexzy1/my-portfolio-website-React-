@@ -10,10 +10,11 @@ const HireMe = forwardRef((props, ref) => {
   const [isSent, setIsSent] = useState(<img src={spinner} alt="loading.." />);
 
   const style = {
-    container: ' p-5 sm:px-8 lg:px-24',
-    title: 'text-lg inline-block pt-3 pb-2 title relative text font-semibold',
+    container: ' p-5 sm:px-8 lg:px-24  pt-32',
+    title_wrapper: 'text-center',
+    title: 'text-lg inline-block pt-3 pb-2 title relative text font-semibold ',
     title__tag: 'text-secondary',
-    wrapper: 'md:flex gap-10',
+    wrapper: 'md:flex md:justify-around gap-10',
     isSent:
       'flex justify-center items-center w-full h-[15rem] mt-14 md:w-[50%] lg:w-[40%]',
     contact__details_container: 'mt-10 md:w-[40%] md:mt-24 md:pt-2',
@@ -25,8 +26,10 @@ const HireMe = forwardRef((props, ref) => {
 
   return (
     <section ref={ref} className={style.container}>
-      <h4 className={style.title}>Hire Me</h4>
-      <p className={style.title__tag}>Feel free to contact me at anytime</p>
+      <div className={style.title_wrapper}>
+        <h4 className={style.title}>Hire Me</h4>
+        <p className={style.title__tag}>Feel free to contact me at anytime</p>
+      </div>
 
       <section className={style.wrapper}>
         {isLoading ? (
@@ -66,7 +69,7 @@ const HireMe = forwardRef((props, ref) => {
 
             <a
               className={style.socials__content}
-              href="https://www.linkedin.com/in/adekoya-john-adebisi-14a628127/"
+              href="https://www.linkedin.com/in/john-adekoya/"
             >
               <RiLinkedinBoxFill />
             </a>

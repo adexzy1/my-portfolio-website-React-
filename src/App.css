@@ -6,6 +6,7 @@
   body {
     scroll-behavior: smooth;
     position: relative;
+    overflow: hidden;
   }
 
   nav section,
@@ -14,18 +15,26 @@
   }
 
   nav a:hover,
-  nav section:hover {
+  nav section:hover,
+  nav button:hover {
     @apply text-nav;
+  }
+
+  #hero-details_class,
+  #hero-img_class {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
   }
 
   .title::after {
     content: '';
     position: absolute;
     height: 7px;
+    margin: 0 auto;
     border-radius: 10px;
-    width: 50%;
+    width: 80%;
     top: 1px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     @apply bg-purple;
   }
 
@@ -34,12 +43,12 @@
   }
 
   .skills p {
-    @apply bg-badge mt-3 mr-3 px-3 py-1 inline-block cursor-pointer;
+    @apply bg-badge mt-3 mr-3 px-3 py-1 inline-block cursor-pointer rounded;
+    transition: ease-in-out all 0.5s;
   }
 
   .skills p:hover {
     transform: translateY(-1rem);
-    transition: ease-in-out all 0.3s;
     @apply bg-purple;
   }
 

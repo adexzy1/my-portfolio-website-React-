@@ -1,6 +1,6 @@
 const scroll = (ref) => {
   window.scrollTo({
-    top: ref.current.offsetTop,
+    top: ref.current.offsetTop - 75,
     behavior: 'smooth',
   });
 };

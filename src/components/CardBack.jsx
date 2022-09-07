@@ -10,6 +10,7 @@ const CardBack = ({ liveLink, github, details, stack }) => {
     ul: 'flex text-xs gap-5 items-center  sm:text-[16px] cursor-pointer mt-auto',
     li: 'flex items-center hover:text-white',
   };
+
   return (
     <section className={`${innerStyle.wrapper} ${style.card__back}`}>
       <p className={innerStyle.details}>{details}</p>
