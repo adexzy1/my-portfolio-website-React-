@@ -1,34 +1,6 @@
-import { forwardRef, useEffect } from 'react';
-import useGsapTimeLine from '../hooks/useGsapTimeLine';
+import { forwardRef } from 'react';
 
 const About = forwardRef((props, ref) => {
-  // custom hook
-  const { tl } = useGsapTimeLine();
-
-  // animation effect
-  useEffect(() => {
-    tl.fromTo(
-      '#about',
-      {
-        autoAlpha: 0,
-        scale: 0.2,
-        // x: '-100%',
-      },
-      {
-        duration: 2,
-        scale: 1,
-        // x: 0,
-        autoAlpha: 1,
-        scrollTrigger: {
-          start: 'top bottom-=100',
-          // end: 'bottom center',
-          trigger: '#about',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
-  }, [tl]);
-
   const style = {
     container:
       'p-5 pt-32 sm:px-8 md:px16 lg:px-24 ease-in-out duration-700 text-center',
