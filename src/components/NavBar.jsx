@@ -36,7 +36,7 @@ const NavBar = ({ about, skills, projects, hireMe }) => {
   const style = {
     header: `${
       setNavToFixed
-        ? 'sticky transition ease-linear duration-700 z-10 bg-purple py-5 top-0 w-[1440px] max-w-[100%] mx-auto mb-40'
+        ? 'sticky transition ease-linear duration-700 z-10 bg-purple py-5 top-0 w-[1440px] max-w-[100%] mx-auto'
         : 'py-6 ease lg:mt-5'
     } `,
     container: 'px-5 flex justify-between items-center md:px16 lg:px-24',

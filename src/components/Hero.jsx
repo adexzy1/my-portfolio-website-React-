@@ -52,7 +52,7 @@ const Hero = () => {
 
         <a
           className="b "
-          href="https://drive.google.com/uc?export=download&id=1a0-13vLNX92FMQ9T_Lu5R5lsfLYcvIot"
+          href="https://drive.google.com/uc?export=download&id=1mjcwXB9CgDHoRjxYuzOdKGqvaP0j2-ux"
           download="John's Resume"
         >
           <button className={style.btn}>Download Resume</button>
