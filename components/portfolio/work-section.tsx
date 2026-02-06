@@ -18,6 +18,15 @@
       "Time and expense management platform that streamlines tracking, reporting, and project workflows across teams",
   },
   {
+    url: "https://gridcoreinc.com",
+    image: "/images/work/gridcore.png",
+    alt: "Gridcore webapp interface",
+    tag: "Web App",
+    title: "Gridcore Platform",
+    description:
+      "intelligent energy platform combining smart metering, embedded finance, and edge orchestration to optimize and scale decentralized power systems across communities.",
+  },
+  {
     url: "https://zaroncosmetics.com",
     image: "/images/work/zaron.png",
     alt: "Zaron Cosmetics website interface",
