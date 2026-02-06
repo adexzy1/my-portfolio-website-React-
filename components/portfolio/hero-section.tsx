@@ -61,11 +61,10 @@ export function HeroSection() {
                 Lagos, Nigeria
               </div>
               <p className="hero-bio">
-                I&apos;m a full-stack engineer with experience building
-                scalable systems, clean APIs, and modern React interfaces. I
-                care deeply about architecture, developer experience, and
-                shipping reliable products â€” especially in platforms that
-                handle real business operations.
+                I&apos;m a full-stack engineer with experience building scalable
+                systems, clean APIs, and modern React interfaces. I care deeply
+                about architecture, developer experience, and shipping reliable
+                products.
               </p>
             </div>
           </div>
