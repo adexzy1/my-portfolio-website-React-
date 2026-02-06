@@ -3,10 +3,10 @@ import { forwardRef } from 'react';
 const About = forwardRef((props, ref) => {
   const style = {
     container:
-      'p-5 pt-32 sm:px-8 md:px16 lg:px-24 ease-in-out duration-700 text-center',
+      'p-5 pt-32 sm:px-8 md:px16 lg:px-24 ease-in-out duration-700 text-center max-w-3xl mx-auto',
     about__me:
-      'text-lg inline-block pt-3 pb-5 title relative text font-semibold',
-    about_text: 'text-secondary leading-7',
+      'text-2xl inline-block pt-3 pb-5 title relative font-bold text-white',
+    about_text: 'text-secondary leading-8 text-base',
   };
   return (
     <section id="about" ref={ref} className={style.container}>

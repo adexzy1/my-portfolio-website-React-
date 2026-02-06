@@ -3,13 +3,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        body: '#17171f',
-        purple: '#3f3fff',
-        input: '#2a2a35',
-        nav: '#A3A3FF',
-        secondary: '#9191A4',
-        badge: '#3f3f51',
+        body: '#0f1419',
+        purple: '#00d4ff',
+        input: '#1a1f2e',
+        nav: '#64b5f6',
+        secondary: '#94a3b8',
+        badge: '#1e293b',
         rgba: 'rgba(0,0,0,0.5)',
+        accent: '#00d4ff',
+        dark: '#0f1419',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

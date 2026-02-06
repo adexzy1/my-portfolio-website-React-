@@ -11,7 +11,7 @@ const ScrollToTop = ({ bodyRef }) => {
       {showScrolltoTop && (
         <section
           onClick={() => scroll(bodyRef)}
-          className="bg-purple p-5 bottom-5 fixed right-3 cursor-pointer rounded-full"
+          className="bg-purple hover:bg-purple/90 p-5 bottom-5 fixed right-3 cursor-pointer rounded-full transition-all duration-200 text-white shadow-lg hover:shadow-purple/50"
         >
           <BiUpArrow />
         </section>

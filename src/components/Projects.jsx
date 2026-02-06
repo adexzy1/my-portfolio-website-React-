@@ -26,11 +26,11 @@ const Projects = forwardRef((props, ref) => {
 
   const style = {
     container: 'p-5  sm:px-8 md:px16 lg:px-24 pt-32',
-    title_wrapper: 'text-center',
+    title_wrapper: 'text-center mb-12',
     title:
-      'text-lg inline-block pt-3 pb-10 title relative text font-semibold text-center',
-    project__container: 'grid sm:grid-cols-2 gap-5 lg:grid-cols-3',
-    loading: 'flex justify-center',
+      'text-2xl inline-block pt-3 pb-10 title relative font-bold text-white text-center',
+    project__container: 'grid sm:grid-cols-2 gap-6 lg:grid-cols-3',
+    loading: 'flex justify-center py-20',
   };
 
   return (

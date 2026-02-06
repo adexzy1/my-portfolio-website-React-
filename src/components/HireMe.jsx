@@ -12,16 +12,16 @@ const HireMe = forwardRef((props, ref) => {
   const style = {
     container: ' p-5 sm:px-8 lg:px-24  pt-32',
     title_wrapper: 'text-center',
-    title: 'text-lg inline-block pt-3 pb-2 title relative text font-semibold ',
-    title__tag: 'text-secondary',
+    title: 'text-2xl inline-block pt-3 pb-2 title relative font-bold text-white',
+    title__tag: 'text-secondary text-sm mt-2',
     wrapper: 'md:flex md:justify-around gap-10',
     isSent:
       'flex justify-center items-center w-full h-[15rem] mt-14 md:w-[50%] lg:w-[40%]',
     contact__details_container: 'mt-10 md:w-[40%] md:mt-24 md:pt-2',
     address: 'mb-10 not-italic',
-    address__content: 'block text-secondary pb-3 hover:text-nav',
+    address__content: 'block text-secondary pb-3 hover:text-purple transition-colors duration-200',
     socials__container: 'flex gap-5 mb-5',
-    socials__content: 'text-2xl hover:text-nav',
+    socials__content: 'text-2xl text-secondary hover:text-purple transition-colors duration-200',
   };
 
   return (

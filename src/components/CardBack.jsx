@@ -3,12 +3,12 @@ import style from '../css/card.module.css';
 
 const CardBack = ({ liveLink, github, details, stack }) => {
   const innerStyle = {
-    wrapper: 'h-full bg-input px-5 py-8  text-secondary flex flex-col',
-    details: 'text-sm leading-6 pb-5 sm:text-[16px] sm:leading-7',
-    stack: 'py-5 flex flex-wrap text-sm text-nav ',
-    span: 'py-1 px-1',
+    wrapper: 'h-full bg-gradient-to-b from-input to-slate-900 px-5 py-8  text-secondary flex flex-col rounded-lg',
+    details: 'text-sm leading-7 pb-5 sm:text-[16px] sm:leading-8',
+    stack: 'py-5 flex flex-wrap text-xs gap-2',
+    span: 'py-2 px-3 bg-badge rounded-md text-purple font-medium',
     ul: 'flex text-xs gap-5 items-center  sm:text-[16px] cursor-pointer mt-auto',
-    li: 'flex items-center hover:text-white',
+    li: 'flex items-center gap-2 hover:text-purple transition-colors duration-200',
   };
 
   return (

@@ -29,13 +29,13 @@ const Hero = () => {
       'p-5 md:grid grid-cols-2 flex-row-reverse justify-center sm:p-8 md:px-16 lg:px-24 overflow-hidden -z-50 lg:mt-10',
     hero__wrapper:
       'max-w-full md:w-[40rem] m-auto col-start-2 opacity-1  translate-x-[0]',
-    hero__img: 'h-full w-full',
+    hero__img: 'h-full w-full rounded-2xl',
     details__wrapper:
       'col-start-1 row-start-1 md:mt-9 lg:mt-14 xl:mt-20 opacity-1 translate-y-[0]',
     hero__text:
-      'md:text-[2.1rem] md:leading-[3rem] lg:text-[2.5rem]  xl:text-[3.7rem] xl:lg:leading-[5rem] sm:text-[3.1rem] sm:leading-[4rem]  text-3xl  pb-6 pt-5 font-bold',
+      'md:text-[2.1rem] md:leading-[3rem] lg:text-[2.5rem]  xl:text-[3.7rem] xl:lg:leading-[5rem] sm:text-[3.1rem] sm:leading-[4rem]  text-3xl  pb-6 pt-5 font-bold text-white',
     line__break: 'hidden md:hidden sm:block',
-    btn: 'bg-purple px-7 py-4 mt-4 rounded hover:text-nav',
+    btn: 'bg-purple hover:bg-purple/90 px-7 py-4 mt-4 rounded-lg font-medium transition-all duration-200 text-white',
   };
 
   return (

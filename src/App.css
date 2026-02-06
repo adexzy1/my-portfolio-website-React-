@@ -11,13 +11,13 @@
 
   nav section,
   nav a {
-    @apply p-4 pt-10 lg:mr-5 lg:pt-4 cursor-pointer;
+    @apply p-4 pt-10 lg:mr-6 lg:pt-4 cursor-pointer text-sm font-medium transition-colors duration-200;
   }
 
   nav a:hover,
   nav section:hover,
   nav button:hover {
-    @apply text-nav;
+    @apply text-purple;
   }
 
   #hero-details_class,
@@ -28,10 +28,10 @@
   .title::after {
     content: '';
     position: absolute;
-    height: 7px;
+    height: 4px;
     margin: 0 auto;
-    border-radius: 10px;
-    width: 80%;
+    border-radius: 2px;
+    width: 60%;
     top: 1px;
     left: 50%;
     transform: translateX(-50%);
@@ -43,24 +43,23 @@
   }
 
   .skills p {
-    @apply bg-badge mt-3 mr-3 px-3 py-1 inline-block cursor-pointer rounded;
-    transition: ease-in-out all 0.5s;
+    @apply bg-badge mt-3 mr-3 px-4 py-2 inline-block cursor-pointer rounded-lg text-xs font-medium transition-all duration-300;
   }
 
   .skills p:hover {
-    transform: translateY(-1rem);
-    @apply bg-purple;
+    transform: translateY(-0.5rem) scale(1.05);
+    @apply bg-purple text-white;
   }
 
   .form-group {
-    @apply mt-3 mb-3;
+    @apply mt-4 mb-4;
   }
 
   .form-group label {
-    @apply pb-3;
+    @apply pb-2 text-sm font-medium;
   }
 
   .form-group input {
-    @apply bg-input w-full h-12 p-5 rounded-md outline-none;
+    @apply bg-input w-full h-12 p-4 rounded-lg outline-none border border-slate-700 focus:border-purple transition-colors;
   }
 }

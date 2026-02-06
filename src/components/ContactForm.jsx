@@ -22,9 +22,9 @@ const ContactForm = ({ setIsloading, setIsSent }) => {
 
   const style = {
     form: 'mt-14 md:w-[50%] lg:w-[40%]',
-    label: 'block',
-    textarea: 'bg-input w-full h-52 p-5 rounded-md outline-none',
-    Btn: 'bg-purple px-7 py-3 my-2 w-2/5 rounded hover:text-nav',
+    label: 'block text-sm font-medium text-white mb-2',
+    textarea: 'bg-input w-full h-52 p-4 rounded-lg outline-none border border-slate-700 focus:border-purple focus:ring-1 focus:ring-purple transition-all resize-none',
+    Btn: 'bg-purple hover:bg-purple/90 px-7 py-3 my-2 w-2/5 rounded-lg font-medium transition-all duration-200 text-white',
   };
 
   const sendEmail = () => {

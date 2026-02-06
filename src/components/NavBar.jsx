@@ -36,21 +36,21 @@ const NavBar = ({ about, skills, projects, hireMe }) => {
   const style = {
     header: `${
       setNavToFixed
-        ? 'sticky transition ease-linear duration-700 z-10 bg-purple py-5 top-0 w-[1440px] max-w-[100%] mx-auto'
+        ? 'sticky transition ease-linear duration-700 z-10 bg-dark/95 backdrop-blur-sm border-b border-slate-800 py-4 top-0 w-[1440px] max-w-[100%] mx-auto'
         : 'py-6 ease lg:mt-5'
     } `,
     container: 'px-5 flex justify-between items-center md:px16 lg:px-24',
     nav: `${showMenu ? 'translate-x-0' : 'translate-x-[-100%]'}
       transform  absolute flex flex-col  top-0 bg-input text-white w-[50%] left-0 p-5 pt-14  transition sm:pl-10 lg:translate-x-0 lg:relative lg:flex-row lg:bg-transparent lg:w-auto lg:items-center lg:text-center lg:p-0 lg:pt-0 lg:h-0 h-[100vh] z-[30]`,
-    btn: 'lg:mr-0 bg-purple px-5 py-2 rounded whitespace-nowrap mt-10 lg:mt-0',
+    btn: 'lg:mr-0 bg-purple hover:bg-purple/90 px-6 py-2.5 rounded-lg whitespace-nowrap mt-10 lg:mt-0 font-medium transition-all duration-200 text-white',
     icon__wrapper: 'lg:hidden',
-    icon: 'text-2xl cursor-pointer',
+    icon: 'text-2xl cursor-pointer transition-colors hover:text-purple',
   };
 
   return (
     <header id="header" className={style.header}>
       <section className={style.container}>
-        <a href="/">
+        <a href="/" className="font-bold text-lg hover:text-purple transition-colors duration-200">
           John <br />
           Adekoya.
         </a>
