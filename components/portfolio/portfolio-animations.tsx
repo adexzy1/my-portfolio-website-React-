@@ -1,0 +1,60 @@
+﻿"use client";
+
+import { useEffect } from "react";
+
+const textSelectors =
+  ".hero-bio, .section-title, .newsletter h2, .blog-section h2, .contact-section h2";
+
+export function PortfolioAnimations() {
+  useEffect(() => {
+    const animateText = (element: Element) => {
+      const text = element.textContent || "";
+      const words = text.split(" ");
+      let html = "";
+      let totalChars = 0;
+
+      words.forEach((word, wordIndex) => {
+        const letters = word.split("");
+        letters.forEach((letter) => {
+          const delay = totalChars * 0.03;
+          html += `<span class="letter-blur" style="animation-delay: ${delay}s">${letter}</span>`;
+          totalChars++;
+        });
+        if (wordIndex < words.length - 1) {
+          html += " ";
+          totalChars++;
+        }
+      });
+
+      element.innerHTML = html;
+    };
+
+    const textElements = document.querySelectorAll(textSelectors);
+    textElements.forEach((el) => {
+      if (!el.classList.contains("animated")) {
+        animateText(el);
+        el.classList.add("animated");
+      }
+    });
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -100px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-in");
+        }
+      });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+    animatedElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return null;
+}
