@@ -366,12 +366,12 @@
   /* iOS app cards */
   .app-tile {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
     aspect-ratio: 4 / 5;
     overflow: hidden;
     border-radius: 1.25rem;
-    padding: 2.25rem 2.25rem 0;
+    padding: 1.75rem 1.5rem 0;
     background: var(--tile, #e9e7df);
   }
   .app-tile--empty {
@@ -381,7 +381,7 @@
   }
   .phone {
     position: relative;
-    width: min(100%, 230px);
+    width: min(100%, 320px);
     aspect-ratio: 9 / 19.5;
     overflow: hidden;
     border-radius: 2rem 2rem 0 0;
