@@ -80,29 +80,12 @@ if (videos.length && !reducedMotion && 'IntersectionObserver' in window) {
   });
 }
 
-/* work section background follows the project in view */
+/* work section background takes the hovered project's faded colour */
 const scene = document.querySelector<HTMLElement>('[data-scene]');
-const entriesInView = new Map<Element, number>();
-if (scene && 'IntersectionObserver' in window) {
-  const rows = scene.querySelectorAll<HTMLElement>('[data-wash]');
-  const io = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) entriesInView.set(entry.target, entry.intersectionRatio);
-        else entriesInView.delete(entry.target);
-      }
-      let best: Element | null = null;
-      let ratio = 0;
-      entriesInView.forEach((r, el) => {
-        if (r > ratio) {
-          ratio = r;
-          best = el;
-        }
-      });
-      const wash = best ? (best as HTMLElement).dataset.wash : '';
-      scene.style.setProperty('--scene-wash', wash || 'var(--color-paper)');
-    },
-    { threshold: [0, 0.25, 0.5, 0.75, 1] },
-  );
-  rows.forEach((r) => io.observe(r));
+if (scene) {
+  const reset = () => scene.style.setProperty('--scene-wash', 'var(--color-paper)');
+  scene.querySelectorAll<HTMLElement>('[data-wash]').forEach((row) => {
+    row.addEventListener('mouseenter', () => scene.style.setProperty('--scene-wash', row.dataset.wash ?? ''));
+    row.addEventListener('mouseleave', reset);
+  });
 }
