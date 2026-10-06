@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://johns-portfolio-bice.vercel.app/sitemap-index.xml

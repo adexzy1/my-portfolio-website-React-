@@ -1,0 +1,129 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const isDev = import.meta.env.DEV;
+const apps = (await getCollection('apps'))
+  .filter((a) => isDev || !a.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+/* Card tint comes from the app's own brand colour, faded onto the paper. */
+const tint = (accent: string) => `color-mix(in srgb, ${accent} 16%, #fafaf8)`;
+
+/* Poster frames for optional demo recordings. */
+const posters = new Map<string, Awaited<ReturnType<typeof getImage>>>();
+for (const a of apps) {
+  const first = a.data.screenshots[0];
+  if (a.data.video && first) {
+    posters.set(a.id, await getImage({ src: first.src, width: 600, format: 'webp', quality: 82 }));
+  }
+}
+
+
+const primaryLink = (links: Record<string, string | undefined>) =>
+  links.appStore ?? links.testflight ?? links.website ?? links.github;
+---
+
+<section id="apps" class="section bg-wash-ios">
+  <div class="container-x">
+    <div class="grid gap-8 md:grid-cols-12 md:items-end">
+      <div class="md:col-span-7">
+        <p class="eyebrow">Native, too</p>
+        <h2 class="mt-4 text-balance text-[2.25rem] font-semibold leading-[1.05] tracking-[-0.03em] text-ink md:text-[3rem]">
+          Two apps,<br />built in SwiftUI.
+        </h2>
+      </div>
+      <p class="max-w-sm text-[15px] leading-relaxed text-ink-2 md:col-span-5 md:justify-self-end">
+        The same care for data and state, on a phone. Shipped as native iOS apps, not wrappers.
+      </p>
+    </div>
+
+    <ul class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        apps.map((app, i) => {
+          const d = app.data;
+          const tile = tint(d.accent);
+          const shot = d.screenshots[0];
+          const href = primaryLink(d.links);
+
+          if (d.draft) {
+            return (
+              <li>
+                <div class="app-tile app-tile--empty">
+                  <p class="px-6 text-center text-sm leading-relaxed text-ink-3">
+                    App {String(i + 1).padStart(2, '0')} awaiting brief.<br />
+                    <span class="font-medium">src/content/apps/{app.id}/index.md</span><br />
+                    Dev only; hidden in production.
+                  </p>
+                </div>
+                <div class="mt-5 h-5 w-40 rounded bg-line"></div>
+                <div class="mt-2 h-3 w-24 rounded bg-line"></div>
+              </li>
+            );
+          }
+
+          return (
+            <li>
+              {href ? (
+                <a href={href} target="_blank" rel="noopener noreferrer" class="app-tile group block" style={`--tile: ${tile}`}>
+                  {shot ? (
+                    <div class="phone transition duration-500 group-hover:-translate-y-2">
+                      <div class="phone__island" aria-hidden="true"></div>
+                      {(() => { const poster = posters.get(app.id); return app.data.video && poster ? (
+                        <video class="motion-video phone__screen" muted loop playsinline preload="none" poster={poster.src} width={poster.attributes.width} height={poster.attributes.height} aria-label={`${app.data.name} demo recording`}>
+                          <source data-src={app.data.video} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <Image src={shot.src} alt={shot.alt} widths={[300, 600]} sizes="230px" format="webp" quality={82} class="phone__screen" />
+                      ); })()}
+                    </div>
+                  ) : (
+                    <p class="pb-10 text-sm text-ink-3">No screenshot yet</p>
+                  )}
+                </a>
+              ) : (
+                <div class="app-tile" style={`--tile: ${tile}`}>
+                  {shot && (
+                    <div class="phone">
+                      <div class="phone__island" aria-hidden="true"></div>
+                      {(() => { const poster = posters.get(app.id); return app.data.video && poster ? (
+                        <video class="motion-video phone__screen" muted loop playsinline preload="none" poster={poster.src} width={poster.attributes.width} height={poster.attributes.height} aria-label={`${app.data.name} demo recording`}>
+                          <source data-src={app.data.video} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <Image src={shot.src} alt={shot.alt} widths={[300, 600]} sizes="230px" format="webp" quality={82} class="phone__screen" />
+                      ); })()}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div class="mt-5 flex items-start justify-between gap-4">
+                <div class="flex items-center gap-3">
+                  {d.icon && <Image src={d.icon} alt="" width={80} height={80} format="webp" class="h-10 w-10 rounded-[0.7rem] border border-line" />}
+                  <div>
+                    <p class="font-semibold tracking-tight text-ink">{d.name}</p>
+                    <p class="text-xs text-ink-3">
+                      iOS{d.category && ` · ${d.category}`}{d.status && ` · ${d.status}`}
+                    </p>
+                  </div>
+                </div>
+                {href && (
+                  <a href={href} target="_blank" rel="noopener noreferrer" class="text-link" aria-label={`Open ${d.name}`}>
+                    <span class="arrow">
+                      <svg class="arrow-ne" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M7 17 17 7m0 0H8m9 0v9" />
+                      </svg>
+                    </span>
+                  </a>
+                )}
+              </div>
+              {(d.tagline || d.summary) && <p class="mt-3 text-sm leading-relaxed text-ink-2">{d.tagline || d.summary}</p>}
+              {d.stack.length > 0 && <p class="mt-2 text-xs text-ink-3">{d.stack.join(' · ')}</p>}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>

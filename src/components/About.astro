@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/portrait.png';
+import { profile } from '../data/profile';
+import { route, education } from '../data/experience';
+import { toolbox } from '../data/skills';
+---
+
+<section id="about" class="section border-t border-line">
+  <div class="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-7 lg:pt-6">
+      <p class="eyebrow">{profile.about.eyebrow}</p>
+      <h2 class="mt-4 text-[2.25rem] font-semibold leading-[1.05] tracking-[-0.03em] text-ink md:text-[3rem]">
+        {profile.about.title[0]}<br />{profile.about.title[1]}
+      </h2>
+      <div class="mt-6 flex max-w-xl flex-col gap-4 text-[15px] leading-relaxed text-ink-2 md:text-base">
+        {profile.about.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+
+      <dl class="mt-10 grid gap-x-10 gap-y-5 border-t border-line pt-8 sm:grid-cols-2">
+        {
+          toolbox.map((g) => (
+            <div>
+              <dt class="eyebrow">{g.label}</dt>
+              <dd class="mt-1.5 text-sm leading-relaxed text-ink-2">{g.items}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <div class="mt-8 flex flex-wrap gap-x-10 gap-y-3 border-t border-line pt-6 text-sm text-ink-2">
+        {
+          education.map((e) => (
+            <p>
+              <span class="font-semibold text-ink">{e.title}</span>, {e.org}, {e.year}
+            </p>
+          ))
+        }
+      </div>
+
+      <p class="mt-8">
+        <a class="text-link" href={profile.resume} target="_blank" rel="noopener">
+          The longer version
+          <span class="arrow">
+            <svg class="arrow-ne" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M7 17 17 7m0 0H8m9 0v9" />
+            </svg>
+          </span>
+        </a>
+      </p>
+    </div>
+    <div class="lg:order-first lg:col-span-5">
+      <Image
+        src={portrait}
+        alt="Portrait of John Adekoya"
+        widths={[480, 720, 960]}
+        sizes="(min-width: 1024px) 34vw, 90vw"
+        format="webp"
+        quality={84}
+        class="aspect-[4/5] w-full max-w-[420px] rounded-2xl object-cover object-top"
+      />
+
+      <div class="mt-8 max-w-[420px]">
+        <p class="eyebrow">My route here</p>
+        <ol class="mt-4 grid grid-cols-3 gap-4 border-t border-line pt-4">
+          {
+            route.map((s, i) => (
+              <li>
+                <p class="text-sm font-semibold text-ink">{s.place}</p>
+                <p class="mt-0.5 text-xs text-ink-3">{s.role}</p>
+                <p class="mt-0.5 text-xs text-ink-3">{s.period}</p>
+                {i === route.length - 1 && <span class="mt-2 block h-0.5 w-10 bg-ink"></span>}
+              </li>
+            ))
+          }
+        </ol>
+        <p class="mt-4 text-sm leading-relaxed text-ink-2">{route[route.length - 1].note}</p>
+      </div>
+    </div>
+
+  </div>
+</section>

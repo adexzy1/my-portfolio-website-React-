@@ -1,0 +1,168 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const featured = all.filter((e) => e.data.featured);
+const more = all.filter((e) => !e.data.featured);
+const host = (url?: string) => (url ? new URL(url).host : '');
+
+/* Poster frames for the looping recordings, optimised like any other image. */
+const posters = new Map<string, Awaited<ReturnType<typeof getImage>>>();
+for (const e of featured) {
+  if (e.data.video && e.data.cover) {
+    posters.set(e.id, await getImage({ src: e.data.cover, width: 1600, format: 'webp', quality: 80 }));
+  }
+}
+---
+
+<section id="work" class="work-scene section border-t border-line" data-scene>
+  <div class="container-x">
+    <div class="flex flex-col gap-5 pb-2 md:flex-row md:items-center md:justify-between">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-[-0.02em] text-ink">Selected work</h2>
+        <p class="mt-1 text-[15px] text-ink-2">Financial platforms, owned from schema to screen.</p>
+      </div>
+      <nav class="flex flex-wrap gap-6" aria-label="Jump to project">
+        {featured.map((e) => <a href={`#work-${e.id}`} class="nav-link">{e.data.title}</a>)}
+      </nav>
+    </div>
+
+    <div class="mt-6 flex flex-col">
+      {
+        featured.map((e) => {
+          const d = e.data;
+          const label = d.urlLabel ?? host(d.url);
+          const poster = posters.get(e.id);
+          const wash = d.wash ?? `color-mix(in srgb, ${d.accent} 7%, #fafaf8)`;
+          return (
+            <article
+              id={`work-${e.id}`}
+              class="work-entry"
+              data-wash={wash}
+              style={`--project: ${d.accent}; --wash: ${wash}`}
+            >
+              <div class="project-visual">
+                <div class="device">
+                  <div class="device__screen">
+                    {d.video && poster ? (
+                      <video
+                        class="motion-video"
+                        muted
+                        loop
+                        playsinline
+                        preload="none"
+                        poster={poster.src}
+                        width={poster.attributes.width}
+                        height={poster.attributes.height}
+                        aria-label={`${d.title} product recording`}
+                      >
+                        <source data-src={d.video} type="video/mp4" />
+                      </video>
+                    ) : d.cover ? (
+                      <Image
+                        src={d.cover}
+                        alt={d.coverAlt ?? `${d.title} screenshot`}
+                        widths={[640, 960, 1280, 1600]}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        format="webp"
+                        quality={82}
+                      />
+                    ) : (
+                      <ul class="spec" aria-label={`${d.title} architecture`}>
+                        {d.specs.map((s, j) => (
+                          <li>
+                            <span class="n">{String(j + 1).padStart(2, '0')}</span>
+                            <span>{s}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div class="work-editorial">
+                <div class="flex items-start justify-between gap-6">
+                  <div>
+                    <p class="text-[24px] font-bold leading-none tracking-[-0.03em]" style="color: var(--project)">{d.title}</p>
+                    {d.meta && <p class="mt-2 text-[13px] text-ink-3">{d.meta}</p>}
+                  </div>
+                  {d.period && <p class="shrink-0 text-[13px] text-ink-3">{d.period}</p>}
+                </div>
+
+                <h3 class="mt-6 text-balance text-[clamp(26px,2.6vw,44px)] font-semibold leading-[1.18] tracking-[-0.045em] text-ink">
+                  {d.headline ?? d.tagline}
+                </h3>
+                {d.pitch && <p class="mt-5 max-w-[46ch] text-[17px] leading-[1.6] text-ink-2">{d.pitch}</p>}
+
+                {d.stat && (
+                  <div class="mt-6 flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-6">
+                    <p class="stat-value shrink-0">{d.stat.value}</p>
+                    <div class="max-w-[30ch] text-[14px] leading-snug text-ink-2">
+                      <p>{d.stat.caption}</p>
+                      {d.stat.detail && <p class="mt-1 text-ink-3">{d.stat.detail}</p>}
+                    </div>
+                  </div>
+                )}
+
+                <p class="mt-6">
+                  {d.url ? (
+                    <a class="text-link text-link--accent text-[15px]" href={d.url} target="_blank" rel="noopener noreferrer">
+                      Visit {label}
+                      <span class="arrow">
+                        <svg class="arrow-ne" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                          <path d="M7 17 17 7m0 0H8m9 0v9" />
+                        </svg>
+                      </span>
+                    </a>
+                  ) : (
+                    <span class="text-[15px] font-medium text-ink-3">{d.status}</span>
+                  )}
+                </p>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <div class="mt-16 md:mt-24">
+      <div class="border-b border-line pb-4">
+        <h3 class="text-xl font-semibold tracking-[-0.02em] text-ink">Also shipped</h3>
+        <p class="mt-1 text-[15px] text-ink-2">Smaller builds and a side project.</p>
+      </div>
+      <ul class="divide-y divide-line">
+        {
+          more.map((e) => {
+            const d = e.data;
+            const label = d.urlLabel ?? host(d.url);
+            return (
+              <li>
+                <a class="group grid items-center gap-4 py-5 sm:grid-cols-12 sm:gap-6" href={d.url} target="_blank" rel="noopener noreferrer">
+                  <div class="hidden sm:col-span-2 sm:block">
+                    <div class="thumb">
+                      {d.cover ? (
+                        <Image src={d.cover} alt={d.coverAlt ?? d.title} widths={[240, 480]} sizes="200px" format="webp" quality={70} />
+                      ) : (
+                        <span class="text-lg font-bold text-ink-3">{d.title.slice(0, 1)}</span>
+                      )}
+                    </div>
+                  </div>
+                  <div class="sm:col-span-3">
+                    <p class="text-lg font-semibold tracking-tight text-ink">{d.title}</p>
+                    <p class="mt-0.5 text-sm text-ink-3">{d.kind}</p>
+                  </div>
+                  <p class="text-[15px] leading-relaxed text-ink-2 sm:col-span-6">{d.tagline}</p>
+                  <p class="text-sm text-ink-3 transition group-hover:text-accent sm:col-span-1 sm:text-right">
+                    <span class="sm:hidden">{label} </span>↗
+                  </p>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</section>

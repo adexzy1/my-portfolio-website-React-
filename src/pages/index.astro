@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Work from '../components/Work.astro';
+import Apps from '../components/Apps.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+const apps = (await getCollection('apps')).filter((a) => import.meta.env.DEV || !a.data.draft);
+const showApps = apps.length > 0;
+---
+
+<BaseLayout>
+  <Header showApps={showApps} />
+  <main id="main">
+    <Hero />
+    <Work />
+    {showApps && <Apps />}
+    <About />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>
