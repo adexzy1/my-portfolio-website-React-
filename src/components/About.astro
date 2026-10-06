@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import portrait from '../assets/portrait-2.jpg';
+import portrait from '../assets/portrait-cutout.png';
 import { profile } from '../data/profile';
 import { route, education } from '../data/experience';
 import { toolbox } from '../data/skills';
@@ -50,15 +50,17 @@ import { toolbox } from '../data/skills';
       </p>
     </div>
     <div class="lg:order-first lg:col-span-5">
-      <Image
-        src={portrait}
-        alt="Portrait of John Adekoya"
-        widths={[480, 720, 960]}
-        sizes="(min-width: 1024px) 34vw, 90vw"
-        format="webp"
-        quality={84}
-        class="aspect-[4/5] w-full max-w-[420px] rounded-2xl object-cover object-top"
-      />
+      <div class="flex aspect-[4/5] w-full max-w-[420px] items-end justify-center overflow-hidden rounded-2xl bg-paper-2 px-6 pt-10">
+        <Image
+          src={portrait}
+          alt="Portrait of John Adekoya"
+          widths={[480, 720]}
+          sizes="(min-width: 1024px) 30vw, 80vw"
+          format="webp"
+          quality={88}
+          class="block h-full w-auto max-w-full object-contain object-bottom"
+        />
+      </div>
 
       <div class="mt-8 max-w-[420px]">
         <p class="eyebrow">My route here</p>
